@@ -9,12 +9,39 @@ import Button from "@mui/material/Button";
 import Landing from "./components/Landing";
 import TitleText from "./components/TitleText";
 
+import { Wrapper, Status } from "@googlemaps/react-wrapper";
+
+import {
+  GoogleMap,
+  useJsApiLoader,
+  Autocomplete,
+  Marker,
+} from "@react-google-maps/api";
+
+const googleMapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY || "";
+const { isLoaded } = useJsApiLoader({
+  id: "google-map-script",
+  googleMapsApiKey,
+});
+
+const containerStyle = {
+  width: "100%",
+  height: "100vh",
+};
+
+const center = {
+  lat: 37.5575,
+  lng: 126.924,
+};
+
 export default function Home() {
   return (
     <>
       <Landing />
       <div className="outter">
+        {/* ================================================== */}
         {/* About us */}
+        {/* ================================================== */}
         <div className={styles.about}>
           <div className={styles.top_area}>
             <div className={styles.img_side}>
@@ -25,7 +52,6 @@ export default function Home() {
               />
             </div>
             <div className={styles.text_side}>
-              {/* <TitleText text="About us" /> */}
               <div className={styles.title}>About us</div>
               <div className={styles.paragraph}>
                 best partner for shipping from Korea to Thailand Since 2019 we
@@ -58,25 +84,31 @@ export default function Home() {
           </div>
         </div>
 
+        {/* ================================================== */}
         {/* Shippings */}
+        {/* ================================================== */}
         <div className={styles.shippings}>
           <div className={styles.con}>
-            <div className={styles.sea}>
+            <div className={styles.type_card}>
               <div>
                 Sea <br />
                 20~25 days
               </div>
-              <div className={styles.img_box}>
-                <img src="ship.png" alt="ship" />
+              <div className={styles.img_con}>
+                <img src="ship_2.png" alt="ship" />
               </div>
             </div>
-            <div className={styles.air}>
+            <div className={styles.type_card}>
               <div>
                 Air <br />
                 3~5 days
               </div>
-              <div className={styles.img_box}>
-                <img src="plane.png" alt="ship" />
+              <div className={styles.img_con}>
+                <img
+                  className={styles.img_plane}
+                  src="plane_2.png"
+                  alt="ship"
+                />
               </div>
             </div>
             <div className={styles.des}>
@@ -89,7 +121,9 @@ export default function Home() {
         </div>
       </div>
 
+      {/* ================================================== */}
       {/* Unpacking Service */}
+      {/* ================================================== */}
       <div className={styles.unpacking}>
         <div className={styles.con}>
           <div className={styles.des}>
@@ -106,58 +140,66 @@ export default function Home() {
               Request
             </Button>
           </div>
-          <div className={styles.dummy}></div>
+          <div className={styles.img_side}>
+            <img src="unpacking.png" alt="" />
+          </div>
+        </div>
+      </div>
+
+      {/* ================================================== */}
+      {/* Pick up Service */}
+      {/* ================================================== */}
+      <div className={styles.Pickup}>
+        <div className={styles.con}>
+          <div className={styles.img_side}>
+            <img src="pickup_img.png" alt="" />
+          </div>
+          <div className={styles.des}>
+            <div className={styles.title}>Pick up Service</div>
+            <div className={styles.paragraph2}>
+              want to know if your order is correct before ship to thailand no
+              problem !
+            </div>
+            <Button
+              className={styles.button}
+              variant="contained"
+              disableElevation
+            >
+              Request
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* ================================================== */}
+      {/* Proxy Payment */}
+      {/* ================================================== */}
+      <div className={styles.Proxy}>
+        <div className={styles.con}>
+          <div className={styles.des}>
+            <div className={styles.title}>Proxy Payment</div>
+            <div className={styles.paragraph2}>
+              want to know if your order is correct before ship to thailand no
+              problem !
+            </div>
+            <Button
+              className={styles.button}
+              variant="contained"
+              disableElevation
+            >
+              Request
+            </Button>
+          </div>
+          <div className={styles.img_side}>
+            <img src="proxy_img.png" alt="" />
+          </div>
         </div>
       </div>
 
       <div className="outter">
-        {/* Pick up Service */}
-        <div className={styles.Pickup}>
-          <div className={styles.con}>
-            <div className={styles.dummy}>
-              <img src="pickup_img.png" alt="" />
-            </div>
-            <div className={styles.des}>
-              <div className={styles.title}>Pick up Service</div>
-              <div className={styles.paragraph2}>
-                want to know if your order is correct before ship to thailand no
-                problem !
-              </div>
-              <Button
-                className={styles.button}
-                variant="contained"
-                disableElevation
-              >
-                Request
-              </Button>
-            </div>
-          </div>
-        </div>
-
-        {/* Proxy Payment */}
-        <div className={styles.Proxy}>
-          <div className={styles.con}>
-            <div className={styles.des}>
-              <div className={styles.title}>Proxy Payment</div>
-              <div className={styles.paragraph2}>
-                want to know if your order is correct before ship to thailand no
-                problem !
-              </div>
-              <Button
-                className={styles.button}
-                variant="contained"
-                disableElevation
-              >
-                Request
-              </Button>
-            </div>
-            <div className={styles.dummy}>
-              <img src="proxy_img.png" alt="" />
-            </div>
-          </div>
-        </div>
-
+        {/* ================================================== */}
         {/* Product */}
+        {/* ================================================== */}
         <div className={styles.products}>
           <div className={styles.title}>Our Products</div>
           <div className={styles.product_con}>
@@ -198,7 +240,9 @@ export default function Home() {
           </div>
         </div>
 
+        {/* ================================================== */}
         {/* three points */}
+        {/* ================================================== */}
         <div className={styles.threePoints}>
           <div className={styles.box}>
             <div className={styles.icon}></div>
@@ -214,7 +258,10 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* ================================================== */}
       {/* reviews */}
+      {/* ================================================== */}
       <div className={styles.reviews}>
         <div className={styles.title}>Reviews</div>
         <div className={styles.paragraph2}>Our Customers Loves our Service</div>
@@ -223,7 +270,9 @@ export default function Home() {
         </div>
       </div>
 
+      {/* ================================================== */}
       {/* contact */}
+      {/* ================================================== */}
       <div className={styles.contact}>
         <div className={styles.title}>Contact</div>
         <div className={styles.con}>
@@ -285,7 +334,9 @@ export default function Home() {
         </div>
       </div>
 
+      {/* ================================================== */}
       {/* footer */}
+      {/* ================================================== */}
       <div className={styles.footer}>
         <img src="footer_logo.png" alt="line" />
         <div className={styles.line} />
