@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+}
+
+.outter {
+  display: flex;
+  // background-color: greenyellow;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1280px;
+  margin: auto;
+}
+
+@media (min-width: 400px) and (max-width: 1048px) {
+  .welcome {
+    color: rgb(255, 64, 0);
+  }
+  .outter {
+    display: flex;
+
+    .inner {
+      background-color: rgba(251, 0, 255, 0.254);
+      margin: 0;
+      width: 100vw;
+    }
+  }
+}

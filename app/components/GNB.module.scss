@@ -1,0 +1,72 @@
+@import "./../styles.scss";
+
+.pc {
+  display: flex;
+}
+
+.mobile {
+  display: none;
+}
+
+.outter {
+  display: flex;
+  position: fixed;
+  width: 100vw;
+  height: 60px;
+  z-index: 99999;
+  background-color: #fff;
+
+  .background {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .inner {
+    margin: 0;
+    width: 1048px;
+    margin: auto;
+    border: #9f9f9f 1px solid;
+  }
+}
+
+.logo {
+  height: 24px;
+  padding: 12px 16px;
+}
+
+.left {
+  display: flex;
+}
+
+.right {
+  display: flex;
+  padding: 12px 20px;
+}
+
+.menu_btn {
+  color: #9f9f9f;
+  opacity: 0.7;
+
+  &:hover {
+    opacity: 1;
+    background-color: transparent;
+  }
+}
+
+@media (max-width: 1048px) {
+  .outter {
+    margin: 0;
+    width: 100vw;
+    margin: auto;
+  }
+
+  .mobile {
+    display: flex;
+  }
+
+  .menu_btn {
+    display: none;
+  }
+}
