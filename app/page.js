@@ -1,37 +1,38 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import about_img_01 from "./../public/about_img_01.png";
-import ship from "./../public/ship.png";
-import plane from "./../public/plane.png";
 import styles from "./page.module.scss";
 import Button from "@mui/material/Button";
 import Landing from "./components/Landing";
-import TitleText from "./components/TitleText";
 
-import { Wrapper, Status } from "@googlemaps/react-wrapper";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
-import {
-  GoogleMap,
-  useJsApiLoader,
-  Autocomplete,
-  Marker,
-} from "@react-google-maps/api";
+// 구글지도
+const Map = () => {
+  const mapContainerStyle = {
+    width: "100%",
+    height: "400px",
+  };
 
-const googleMapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY || "";
-const { isLoaded } = useJsApiLoader({
-  id: "google-map-script",
-  googleMapsApiKey,
-});
+  const center = {
+    lat: 37.485214, // Replace with your desired latitude
+    lng: 127.121347, // Replace with your desired longitude
+  };
 
-const containerStyle = {
-  width: "100%",
-  height: "100vh",
-};
-
-const center = {
-  lat: 37.5575,
-  lng: 126.924,
+  return (
+    <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}>
+      <GoogleMap
+        mapContainerStyle={mapContainerStyle}
+        center={center}
+        zoom={17}
+      >
+        {/* Use the 'icon' prop with the state value */}
+        <Marker position={center} icon="s2u_pin.png" />
+      </GoogleMap>
+    </LoadScript>
+  );
 };
 
 export default function Home() {
@@ -42,7 +43,7 @@ export default function Home() {
         {/* ================================================== */}
         {/* About us */}
         {/* ================================================== */}
-        <div className={styles.about}>
+        <div className={styles.about} id="about">
           <div className={styles.top_area}>
             <div className={styles.img_side}>
               <Image
@@ -51,6 +52,7 @@ export default function Home() {
                 alt="about_img_01"
               />
             </div>
+            <img className={styles.map_img} src="/map.png" alt="map" />
             <div className={styles.text_side}>
               <div className={styles.title}>About us</div>
               <div className={styles.paragraph}>
@@ -87,7 +89,7 @@ export default function Home() {
         {/* ================================================== */}
         {/* Shippings */}
         {/* ================================================== */}
-        <div className={styles.shippings}>
+        <div className={styles.shippings} id="service">
           <div className={styles.con}>
             <div className={styles.type_card}>
               <div>
@@ -273,12 +275,13 @@ export default function Home() {
       {/* ================================================== */}
       {/* contact */}
       {/* ================================================== */}
-      <div className={styles.contact}>
+      <div className={styles.contact} id="contact">
         <div className={styles.title}>Contact</div>
         <div className={styles.con}>
           <div className={styles.map_side}>
-            <img src="contact_map.png" alt="map" />
-
+            <div className={styles.map_con}>
+              <Map />
+            </div>
             <div className={styles.location_contact_con}>
               <div className={styles.location_con}>
                 <div className={styles.contact_title}>Location</div>

@@ -38,6 +38,9 @@
 
 .left {
   display: flex;
+  gap: 20px;
+  // background-color: #9f9f9f;
+  align-items: center;
 }
 
 .right {
@@ -47,6 +50,7 @@
 
 .menu_btn {
   color: #9f9f9f;
+  text-decoration: none;
   opacity: 0.7;
 
   &:hover {

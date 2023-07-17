@@ -13,7 +13,21 @@ export default function Landing() {
           Your Best <br /> Shipping Partner
         </p>
       </div>
-      <Button className={styles.button} variant="contained" disableElevation>
+      <Button
+        className={styles.button}
+        variant="contained"
+        disableElevation
+        style={{
+          display: "inline-flex",
+          padding: "20px 26px",
+          marginTop: "3vw",
+          marginLeft: "60px",
+          alignItems: "flex-start",
+          background: "#ff547d",
+          borderRadius: "9999px",
+          zIndex: "2",
+        }}
+      >
         see more
       </Button>
     </div>

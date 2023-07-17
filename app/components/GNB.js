@@ -1,8 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import React from "react";
 import styles from "./GNB.module.scss";
-import S2U_Logo from "./../../public/s2u-logo.svg";
 
 import Button from "@mui/material/Button";
 
@@ -12,36 +12,20 @@ export default function GNB() {
       <div className={styles.background}>
         {/* 왼쪽 */}
         <div className={styles.left}>
-          {/* <S2U_Logo className={styles.logo} /> */}
           <a href="">
             <img className={styles.logo} src="logo.png" alt="" />
           </a>
-          <Button
-            className={styles.menu_btn}
-            disableRipple
-            variant="text"
-            size="large"
-          >
+          <Link className={styles.menu_btn} href="#about">
             About
-          </Button>
+          </Link>
 
-          <Button
-            className={styles.menu_btn}
-            disableRipple
-            variant="text"
-            size="large"
-          >
-            Service & Price
-          </Button>
+          <Link className={styles.menu_btn} disableRipple href="#service">
+            Services
+          </Link>
 
-          <Button
-            className={styles.menu_btn}
-            disableRipple
-            variant="text"
-            size="large"
-          >
+          <Link className={styles.menu_btn} href="#contact">
             Contact
-          </Button>
+          </Link>
         </div>
 
         {/* 오른쪽 */}

@@ -87,6 +87,14 @@
     display: flex;
     align-items: center;
 
+    .map_img {
+      position: absolute;
+      margin-top: 800px;
+      max-width: 1280px;
+      width: 100%;
+      z-index: -99;
+    }
+
     .img_side {
       padding: 40px;
       flex: 1;
@@ -403,7 +411,11 @@
 
     .map_side {
       flex: 1;
-      // display: flex;
+
+      .map_con {
+        border-radius: 20px;
+        overflow: hidden;
+      }
 
       img {
         width: 100%;
