@@ -1,5 +1,7 @@
 "use client";
 
+import useStore from "./store";
+
 import Image from "next/image";
 import Link from "next/link";
 import about_img_01 from "./../public/about_img_01.png";
@@ -25,6 +27,7 @@ const Map = () => {
     <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
+        mapTypeId="hybrid"
         center={center}
         zoom={17}
       >
@@ -36,9 +39,31 @@ const Map = () => {
 };
 
 export default function Home() {
+  // 스토어 값
+  const lang = useStore((state) => state.lang);
+  const toEng = useStore((state) => state.toEng);
+
+  function LangText(props) {
+    if (lang == "eng") {
+      return <div> {props.eng}</div>;
+    } else if (lang == "thai") {
+      return <div> {props.thai}</div>;
+    } else if (lang == "kor") {
+      return <div> {props.kor}</div>;
+    }
+  }
+
   return (
     <>
-      <Landing />
+      <Landing id="landing" />
+
+      {/* lang 테스트 */}
+      <LangText
+        thai="this is Thai lang"
+        eng="this is English lang"
+        kor="this is Korean lang"
+      />
+
       <div className="outter">
         {/* ================================================== */}
         {/* About us */}
@@ -52,12 +77,18 @@ export default function Home() {
                 alt="about_img_01"
               />
             </div>
+
             <img className={styles.map_img} src="/map.png" alt="map" />
+
             <div className={styles.text_side}>
               <div className={styles.title}>About us</div>
               <div className={styles.paragraph}>
-                best partner for shipping from Korea to Thailand Since 2019 we
-                are helping customers with small to big amount of cargo
+                <LangText
+                  thai="พันธมิตรที่ดีที่สุดสำหรับการขนส่งจากเกาหลีมาไทยตั้งแต่ปี 2562 เรา
+                เป็น"
+                  eng="best partner for shipping from Korea to Thailand Since 2019 we
+                are helping customers with small to big amount of cargo"
+                />
               </div>
             </div>
           </div>
@@ -67,6 +98,10 @@ export default function Home() {
               <div className={styles.dialog_paragraph}>
                 best partner for shipping from Korea to Thailand Since 2019 we
                 are
+                <LangText
+                  eng="best partner for shipping from Korea to Thailand Since 2019 we
+                  are"
+                />
               </div>
             </div>
             <div className={styles.dialog}>
@@ -109,7 +144,7 @@ export default function Home() {
                 <img
                   className={styles.img_plane}
                   src="plane_2.png"
-                  alt="ship"
+                  alt="plane"
                 />
               </div>
             </div>

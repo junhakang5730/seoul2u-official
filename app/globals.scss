@@ -12,12 +12,14 @@ body {
   margin: auto;
 }
 
-@media (min-width: 400px) and (max-width: 1048px) {
+@media (max-width: 1048px) {
   .welcome {
     color: rgb(255, 64, 0);
   }
   .outter {
     display: flex;
+    overflow: hidden;
+    padding: 0 20px;
 
     .inner {
       background-color: rgba(251, 0, 255, 0.254);
