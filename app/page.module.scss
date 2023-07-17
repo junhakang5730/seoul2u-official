@@ -621,13 +621,45 @@
   }
 
   .shippings {
+    padding: 100px 0;
+    overflow: visible;
+
     .con {
       flex-direction: column;
-      padding: 20px;
-    }
+      overflow: visible;
 
-    .des {
-      padding: 20px;
+      .type_card {
+        flex-direction: row;
+        justify-content: space-between;
+        overflow: visible;
+        border-radius: 20px;
+        margin-top: 20px;
+        padding: 40px 0 40px 40px;
+        gap: 20px;
+
+        .img_con {
+          // background-color: #433c3e;
+          justify-content: flex-end;
+          width: 180px;
+
+          img {
+            width: 180px;
+            left: 20px;
+            top: -40px;
+            // background-color: aqua;
+          }
+
+          .img_plane {
+            width: 240px;
+            left: -30px;
+            top: -20px;
+          }
+        }
+      }
+
+      .des {
+        padding: 20px;
+      }
     }
   }
 
